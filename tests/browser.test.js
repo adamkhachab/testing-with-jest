@@ -1,4 +1,5 @@
 const { Builder, By, until } = require('selenium-webdriver');
+const firefox = require('selenium-webdriver/firefox');
 require('geckodriver');
 
 const fileUnderTest = 'file://' + __dirname.replaceAll(/ /g, '%20').replaceAll(/\\/g, '/') + '/../dist/index.html';
@@ -8,7 +9,9 @@ jest.setTimeout(1000 * 60 * 5);
 
 beforeAll(async () => {
     console.log(fileUnderTest);
-    driver = await new Builder().forBrowser('firefox').build();
+    let options = new firefox.Options();
+    options.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe");
+    driver = await new Builder().forBrowser('firefox').setFirefoxOptions(options).build();
     await driver.get(fileUnderTest);
 });
 
