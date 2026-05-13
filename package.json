@@ -1,0 +1,22 @@
+{
+  "name": "testing-with-jest",
+  "version": "1.0.0",
+  "description": "Labb test",
+  "main": "src/index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/adamkhachab/testing-with-jest.git"
+  },
+  "author": "adamkhachab",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/adamkhachab/testing-with-jest/issues"
+  },
+  "homepage": "https://github.com/adamkhachab/testing-with-jest#readme"
+}
