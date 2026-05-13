@@ -1,5 +1,4 @@
 const { Builder, By, until } = require('selenium-webdriver');
-const firefox = require('selenium-webdriver/firefox');
 require('geckodriver');
 
 const fileUnderTest = 'file://' + __dirname.replaceAll(/ /g, '%20').replaceAll(/\\/g, '/') + '/../dist/index.html';
@@ -9,9 +8,7 @@ jest.setTimeout(1000 * 60 * 5);
 
 beforeAll(async () => {
     console.log(fileUnderTest);
-    let options = new firefox.Options();
-    options.setBinary("C:\\Program Files\\Mozilla Firefox\\firefox.exe");
-    driver = await new Builder().forBrowser('firefox').setFirefoxOptions(options).build();
+    driver = await new Builder().forBrowser('firefox').build();
     await driver.get(fileUnderTest);
 });
 
@@ -32,4 +29,8 @@ describe('Clicking "Pusha till stacken"', () => {
         await alert.sendKeys("Bananer");
         await alert.accept();
     });
+    test('The stack display should update after pushing', async () => {
+    let display = await driver.findElement(By.id('top_of_stack')).getText();
+    expect(display).toEqual("Bananer");
+});
 });
