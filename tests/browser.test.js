@@ -29,8 +29,8 @@ describe('Clicking "Pusha till stacken"', () => {
         await alert.sendKeys("Bananer");
         await alert.accept();
     });
-    test('The stack display should update after pushing', async () => {
+});
+test('The stack display should update after pushing', async () => {
     let display = await driver.findElement(By.id('top_of_stack')).getText();
     expect(display).toEqual("Bananer");
-});
 });
